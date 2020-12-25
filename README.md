@@ -3,11 +3,12 @@ This repository can be seen as a boilerplate repository when finished. There may
 
 My goal is to run activities in the smallest timespan possible (and also charge your creditcard with the same rate 🚀 be carefull).
 
-Criteria fore my goal are:
+## Criteria for my goal:
 - Touch 1 million resources / objects
 - Each activity is ACID
 - Pay per use
 
+## No green, no joy!
 ![CodeQL](https://github.com/Johanbos/scaled-activities/workflows/CodeQL/badge.svg)
 ![Azure ARM](https://github.com/Johanbos/scaled-activities/workflows/Azure%20ARM/badge.svg)
 
