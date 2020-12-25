@@ -1,0 +1,48 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "f53581df-cf83-41e6-b94d-9f2deb14f109"
+        },
+        "name": {
+            "value": "scaled-activities"
+        },
+        "location": {
+            "value": "West Europe"
+        },
+        "hostingPlanName": {
+            "value": "ASP-scaledactivities-865e"
+        },
+        "serverFarmResourceGroup": {
+            "value": "scaled-activities"
+        },
+        "alwaysOn": {
+            "value": false
+        },
+        "storageAccountName": {
+            "value": "scaledactivities"
+        },
+        "sku": {
+            "value": "Dynamic"
+        },
+        "skuCode": {
+            "value": "Y1"
+        },
+        "workerSize": {
+            "value": "0"
+        },
+        "workerSizeId": {
+            "value": "0"
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+        "use32BitWorkerProcess": {
+            "value": false
+        },
+        "linuxFxVersion": {
+            "value": "dotnet|3.1"
+        }
+    }
+}
