@@ -19,8 +19,8 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ../infra/deploy.json
-        parameters: ../infra/parameters.json
+        template: ../../infra/deploy.json
+        parameters: ../../infra/parameters.json
 
       # output containerName variable from template
     - run: echo ${{ steps.deploy.outputs.containerName }}
