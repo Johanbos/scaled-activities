@@ -8,6 +8,9 @@ Criteria fore my goal are:
 - Each activity is ACID
 - Pay per use
 
+![CodeQL](https://github.com/Johanbos/scaled-activities/workflows/CodeQL/badge.svg)
+![Azure ARM](https://github.com/Johanbos/scaled-activities/workflows/Azure%20ARM/badge.svg)
+
 No graph? Go [here](https://mermaid-js.github.io/mermaid-live-editor) and use you copy-paste skills.
 :::mermaid
 sequenceDiagram
