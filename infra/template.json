@@ -26,9 +26,6 @@
         "use32BitWorkerProcess": {
             "type": "bool"
         },
-        "linuxFxVersion": {
-            "type": "string"
-        },
         "sku": {
             "type": "string"
         },
@@ -50,9 +47,9 @@
             "apiVersion": "2018-11-01",
             "name": "[parameters('name')]",
             "type": "Microsoft.Web/sites",
-            "kind": "functionapp,linux",
+            "kind": "functionapp",
             "location": "[parameters('location')]",
-            "tags": {},
+            "tags": { },
             "dependsOn": [
                 "microsoft.insights/components/scaled-activities",
                 "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
@@ -81,13 +78,20 @@
                         {
                             "name": "AzureWebJobsStorage",
                             "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTSHARE",
+                            "value": "[concat(toLower(parameters('name')), 'bb8d')]"
                         }
                     ],
-                    "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]",
-                    "linuxFxVersion": "[parameters('linuxFxVersion')]"
+                    "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]"
                 },
                 "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
-                "clientAffinityEnabled": false
+                "clientAffinityEnabled": true
             }
         },
         {
@@ -95,15 +99,14 @@
             "name": "[parameters('hostingPlanName')]",
             "type": "Microsoft.Web/serverfarms",
             "location": "[parameters('location')]",
-            "kind": "linux",
+            "kind": "",
             "tags": {},
             "dependsOn": [],
             "properties": {
                 "name": "[parameters('hostingPlanName')]",
                 "workerSize": "[parameters('workerSize')]",
                 "workerSizeId": "[parameters('workerSizeId')]",
-                "numberOfWorkers": "[parameters('numberOfWorkers')]",
-                "reserved": true
+                "numberOfWorkers": "[parameters('numberOfWorkers')]"
             },
             "sku": {
                 "Tier": "[parameters('sku')]",
@@ -114,7 +117,7 @@
             "apiVersion": "2020-02-02-preview",
             "name": "scaled-activities",
             "type": "microsoft.insights/components",
-            "location": "westeurope",
+            "location": "eastus2",
             "tags": {},
             "dependsOn": [
                 "newWorkspaceTemplate"
@@ -124,7 +127,7 @@
                 "Request_Source": "IbizaWebAppExtensionCreate",
                 "Flow_Type": "Redfield",
                 "Application_Type": "web",
-                "WorkspaceResourceId": "/subscriptions/f53581df-cf83-41e6-b94d-9f2deb14f109/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-f53581df-cf83-41e6-b94d-9f2deb14f109-WEU"
+                "WorkspaceResourceId": "/subscriptions/f53581df-cf83-41e6-b94d-9f2deb14f109/resourceGroups/DefaultResourceGroup-EUS2/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-f53581df-cf83-41e6-b94d-9f2deb14f109-EUS2"
             }
         },
         {
@@ -145,7 +148,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
             "name": "newWorkspaceTemplate",
-            "resourceGroup": "DefaultResourceGroup-WEU",
+            "resourceGroup": "DefaultResourceGroup-EUS2",
             "subscriptionId": "[parameters('subscriptionId')]",
             "properties": {
                 "mode": "Incremental",
@@ -157,9 +160,9 @@
                     "resources": [
                         {
                             "apiVersion": "2020-08-01",
-                            "name": "DefaultWorkspace-f53581df-cf83-41e6-b94d-9f2deb14f109-WEU",
+                            "name": "DefaultWorkspace-f53581df-cf83-41e6-b94d-9f2deb14f109-EUS2",
                             "type": "Microsoft.OperationalInsights/workspaces",
-                            "location": "westeurope",
+                            "location": "eastus2",
                             "properties": {}
                         }
                     ]

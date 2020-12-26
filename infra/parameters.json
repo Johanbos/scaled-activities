@@ -9,10 +9,10 @@
             "value": "scaled-activities"
         },
         "location": {
-            "value": "West Europe"
+            "value": "East US 2"
         },
         "hostingPlanName": {
-            "value": "ASP-scaledactivities-865e"
+            "value": "ASP-scaledactivities-870f"
         },
         "serverFarmResourceGroup": {
             "value": "scaled-activities"
@@ -39,10 +39,7 @@
             "value": "1"
         },
         "use32BitWorkerProcess": {
-            "value": false
-        },
-        "linuxFxVersion": {
-            "value": "dotnet|3.1"
+            "value": true
         }
     }
 }
