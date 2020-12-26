@@ -21,7 +21,7 @@
             "value": false
         },
         "storageAccountName": {
-            "value": "scaledactivities-eus2"
+            "value": "scaledactivitieseus2"
         },
         "sku": {
             "value": "Dynamic"
