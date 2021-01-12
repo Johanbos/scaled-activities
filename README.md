@@ -10,7 +10,8 @@ My goal is to run activities in the smallest timespan possible (and also charge 
 
 ## No green, no joy!
 ![CodeQL](https://github.com/Johanbos/scaled-activities/workflows/CodeQL/badge.svg)
-![Azure ARM](https://github.com/Johanbos/scaled-activities/workflows/Azure%20ARM/badge.svg)
+![Test](https://github.com/Johanbos/scaled-activities/workflows/Test/badge.svg)
+![Deploy](https://github.com/Johanbos/scaled-activities/workflows/Deploy/badge.svg)
 
 No graph? Go [here](https://mermaid-js.github.io/mermaid-live-editor) and use you copy-paste skills.
 :::mermaid
