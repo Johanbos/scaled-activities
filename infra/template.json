@@ -8,6 +8,9 @@
         "functionName": {
             "type": "string"
         },
+        "applicationInsightsName": {
+            "type": "string"
+        },
         "location": {
             "type": "string"
         },
@@ -51,7 +54,7 @@
             "location": "[parameters('location')]",
             "tags": { },
             "dependsOn": [
-                "microsoft.insights/components/scaled-activities",
+                "[concat('microsoft.insights/components/', parameters('applicationInsightsName'))]",
                 "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
                 "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
             ],
@@ -69,11 +72,11 @@
                         },
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-                            "value": "[reference('microsoft.insights/components/scaled-activities', '2015-05-01').InstrumentationKey]"
+                            "value": "[reference(concat('microsoft.insights/components/',parameters('applicationInsightsName')), '2015-05-01').InstrumentationKey]"
                         },
                         {
                             "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
-                            "value": "[reference('microsoft.insights/components/scaled-activities', '2015-05-01').ConnectionString]"
+                            "value": "[reference(concat('microsoft.insights/components/',parameters('applicationInsightsName')), '2015-05-01').ConnectionString]"
                         },
                         {
                             "name": "AzureWebJobsStorage",
@@ -115,7 +118,7 @@
         },
         {
             "apiVersion": "2020-02-02-preview",
-            "name": "scaled-activities",
+            "name": "parameters('applicationInsightsName')",
             "type": "microsoft.insights/components",
             "location": "eastus2",
             "tags": {},
