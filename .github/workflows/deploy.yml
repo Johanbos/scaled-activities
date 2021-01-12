@@ -1,21 +1,31 @@
 on:
   push:
     branches: [ main ]
+  pull_request: 
+    branches: [ main ] # testing
+
 name: Azure ARM
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-
-      # Checkout code
     - uses: actions/checkout@main
 
-      # Log into Azure
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+
+    - name: Restore dependencies
+      run: dotnet restore ./src
+
+    - name: Publish
+      run: dotnet publish ./out
+
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Deploy ARM template
     - name: Run ARM deploy
       uses: azure/arm-deploy@v1
       with:
@@ -23,6 +33,3 @@ jobs:
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./infra/template.json
         parameters: ./infra/parameters.json
-
-      # output containerName variable from template
-    - run: echo ${{ steps.deploy.outputs.containerName }}
