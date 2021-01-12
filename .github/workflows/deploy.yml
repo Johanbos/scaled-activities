@@ -6,7 +6,6 @@ on:
   pull_request: 
     branches: [ main ] # testing
 
-name: Azure ARM
 jobs:
   deploy:
     runs-on: ubuntu-latest
