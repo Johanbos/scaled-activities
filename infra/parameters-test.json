@@ -24,7 +24,7 @@
             "value": false
         },
         "storageAccountName": {
-            "value": "stscaledactivitiestesteus2"
+            "value": "stscaledacttesteus2"
         },
         "sku": {
             "value": "Dynamic"
