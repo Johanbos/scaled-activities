@@ -5,7 +5,7 @@
         "subscriptionId": {
             "type": "string"
         },
-        "name": {
+        "functionName": {
             "type": "string"
         },
         "location": {
@@ -45,7 +45,7 @@
     "resources": [
         {
             "apiVersion": "2018-11-01",
-            "name": "[parameters('name')]",
+            "name": "[parameters('functionName')]",
             "type": "Microsoft.Web/sites",
             "kind": "functionapp",
             "location": "[parameters('location')]",
@@ -56,7 +56,7 @@
                 "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
             ],
             "properties": {
-                "name": "[parameters('name')]",
+                "name": "[parameters('functionName')]",
                 "siteConfig": {
                     "appSettings": [
                         {
@@ -85,7 +85,7 @@
                         },
                         {
                             "name": "WEBSITE_CONTENTSHARE",
-                            "value": "[concat(toLower(parameters('name')), 'bb8d')]"
+                            "value": "[concat(toLower(parameters('functionName')), 'bb8d')]"
                         }
                     ],
                     "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]"
@@ -123,7 +123,7 @@
                 "newWorkspaceTemplate"
             ],
             "properties": {
-                "ApplicationId": "[parameters('name')]",
+                "ApplicationId": "[parameters('functionName')]",
                 "Request_Source": "IbizaWebAppExtensionCreate",
                 "Flow_Type": "Redfield",
                 "Application_Type": "web",
