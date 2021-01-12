@@ -5,14 +5,14 @@
         "subscriptionId": {
             "value": "f53581df-cf83-41e6-b94d-9f2deb14f109"
         },
-        "name": {
-            "value": "func-scaled-activities-eus2"
+        "functioNname": {
+            "value": "func-scaled-activities-test-eus2"
         },
         "location": {
             "value": "East US 2"
         },
         "hostingPlanName": {
-            "value": "plan-scaled-activities-eus2"
+            "value": "plan-scaled-activities-test-eus2"
         },
         "serverFarmResourceGroup": {
             "value": "rg-scaled-activities-test-eus2"
@@ -21,7 +21,7 @@
             "value": false
         },
         "storageAccountName": {
-            "value": "stscaledactivitieseus2"
+            "value": "stscaledactivitiestesteus2"
         },
         "sku": {
             "value": "Dynamic"
