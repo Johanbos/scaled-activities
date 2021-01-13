@@ -172,5 +172,11 @@
                 }
             }
         }
-    ]
+    ],
+    "outputs": {
+        "functionName": {
+          "type": "string",
+          "value": "[parameters('functionName')]"
+        }
+      }
 }
