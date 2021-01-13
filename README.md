@@ -15,6 +15,9 @@ My goal is to run activities in the smallest timespan possible (and also charge 
 
 ## Links
 - [Azure Naming Convention](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)
+- [NuGet CSharpGuidelinesAnalyzer](https://github.com/bkoelman/CSharpGuidelinesAnalyzer)
+- [NuGet CodeAnalysis.CSharp](https://github.com/dotnet/roslyn/tree/master/src/Analyzers/CSharp/Analyzers)
+- [NuGet StyleCop](https://github.com/DotNetAnalyzers/StyleCopAnalyzers)
 
 No graph? Go [here](https://mermaid-js.github.io/mermaid-live-editor) and use you copy-paste skills.
 :::mermaid
