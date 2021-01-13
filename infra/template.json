@@ -91,11 +91,13 @@
                             "value": "[concat(toLower(parameters('functionName')), 'bb8d')]"
                         }
                     ],
-                    "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]"
+                    "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]",
+                    "ftpsState": "Disabled",
+                    "http20Enabled": true
                 },
                 "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('resourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
                 "clientAffinityEnabled": false,
-                "ftpsState": "Disabled"
+                "httpsOnly": false
             }
         },
         {
