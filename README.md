@@ -13,6 +13,9 @@ My goal is to run activities in the smallest timespan possible (and also charge 
 ![Test](https://github.com/Johanbos/scaled-activities/workflows/Test/badge.svg)
 ![Deploy](https://github.com/Johanbos/scaled-activities/workflows/Deploy/badge.svg)
 
+## Links
+- [Azure Naming Convention](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)
+
 No graph? Go [here](https://mermaid-js.github.io/mermaid-live-editor) and use you copy-paste skills.
 :::mermaid
 sequenceDiagram
