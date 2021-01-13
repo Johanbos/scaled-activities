@@ -17,7 +17,7 @@
         "hostingPlanName": {
             "type": "string"
         },
-        "serverFarmResourceGroup": {
+        "resourceGroup": {
             "type": "string"
         },
         "alwaysOn": {
@@ -93,7 +93,7 @@
                     ],
                     "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]"
                 },
-                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('resourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
                 "clientAffinityEnabled": true
             }
         },
@@ -118,7 +118,7 @@
         },
         {
             "apiVersion": "2020-02-02-preview",
-            "name": "parameters('applicationInsightsName')",
+            "name": "[parameters('applicationInsightsName')]",
             "type": "microsoft.insights/components",
             "location": "eastus2",
             "tags": {},
