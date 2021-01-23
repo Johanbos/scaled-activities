@@ -39,7 +39,7 @@ jobs:
         parameters: ./infra/parameters-test.json
 
     - name: Deploy
-      uses: Azure/functions-action@v1.1.8
+      uses: Azure/functions-action@v1.2.1
       with:
         app-name: ${{ steps.infra.outputs.functionName }}
         package: ./package

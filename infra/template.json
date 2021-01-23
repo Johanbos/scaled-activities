@@ -94,7 +94,8 @@
           "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]"
         },
         "serverFarmId": "[variables('hostingPlanId')]",
-        "clientAffinityEnabled": true
+        "clientAffinityEnabled": false,
+        "httpsOnly": true
       }
     },
     {
