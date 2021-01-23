@@ -184,7 +184,7 @@
                           "metrics": [
                             {
                               "resourceMetadata": {
-                                "id": "[concat(resourceGroup.id, '/providers/Microsoft.Web/sites/', parameters('functionName'))]"
+                                "id": "[concat(resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('functionName'))]"
                               },
                               "name": "AverageMemoryWorkingSet",
                               "aggregationType": 4,
@@ -246,7 +246,7 @@
                           "metrics": [
                             {
                               "resourceMetadata": {
-                                "id": "[concat(resourceGroup.id, '/providers/Microsoft.Web/sites/', parameters('functionName'))]"
+                                "id": "[concat(resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('functionName'))]"
                               },
                               "name": "FunctionExecutionCount",
                               "aggregationType": 1,
@@ -369,9 +369,6 @@
       "name": "[parameters('functionName')]",
       "type": "Microsoft.Portal/dashboards",
       "location": "[resourceGroup().location]",
-      "tags": {
-        "hidden-title": "[parameters('functionName')]"
-      },
       "apiVersion": "2015-08-01-preview"
     }
   ],
