@@ -2,44 +2,23 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "subscriptionId": {
-      "type": "string"
-    },
     "functionName": {
       "type": "string"
     },
     "applicationInsightsName": {
       "type": "string"
     },
-    "location": {
-      "type": "string"
-    },
     "hostingPlanName": {
       "type": "string"
     },
-    "alwaysOn": {
-      "type": "bool"
+    "dashboardName": {
+      "type": "string"
     },
     "storageAccountName": {
       "type": "string"
     },
-    "use32BitWorkerProcess": {
+    "alwaysOn": {
       "type": "bool"
-    },
-    "sku": {
-      "type": "string"
-    },
-    "skuCode": {
-      "type": "string"
-    },
-    "workerSize": {
-      "type": "string"
-    },
-    "workerSizeId": {
-      "type": "string"
-    },
-    "numberOfWorkers": {
-      "type": "string"
     }
   },
   "variables": {
@@ -51,7 +30,7 @@
       "name": "[parameters('functionName')]",
       "type": "Microsoft.Web/sites",
       "kind": "functionapp",
-      "location": "[parameters('location')]",
+      "location": "[resourceGroup().location)]",
       "tags": {},
       "dependsOn": [
         "[concat('microsoft.insights/components/', parameters('applicationInsightsName'))]",
@@ -91,7 +70,7 @@
               "value": "[concat(toLower(parameters('functionName')), 'bb8d')]"
             }
           ],
-          "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]"
+          "use32BitWorkerProcess": false
         },
         "serverFarmId": "[variables('hostingPlanId')]",
         "clientAffinityEnabled": false,
@@ -102,19 +81,19 @@
       "apiVersion": "2018-11-01",
       "name": "[parameters('hostingPlanName')]",
       "type": "Microsoft.Web/serverfarms",
-      "location": "[parameters('location')]",
+      "location": "[resourceGroup().location]",
       "kind": "",
       "tags": {},
       "dependsOn": [],
       "properties": {
         "name": "[parameters('hostingPlanName')]",
-        "workerSize": "[parameters('workerSize')]",
-        "workerSizeId": "[parameters('workerSizeId')]",
-        "numberOfWorkers": "[parameters('numberOfWorkers')]"
+        "workerSize": 0,
+        "workerSizeId": 0,
+        "numberOfWorkers": 1
       },
       "sku": {
-        "Tier": "[parameters('sku')]",
-        "Name": "[parameters('skuCode')]"
+        "Tier": "Dynamic",
+        "Name": "Y1"
       }
     },
     {
@@ -138,7 +117,7 @@
       "apiVersion": "2019-06-01",
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[parameters('storageAccountName')]",
-      "location": "[parameters('location')]",
+      "location": "[resourceGroup().location]",
       "tags": {},
       "sku": {
         "name": "Standard_LRS"
@@ -153,7 +132,7 @@
       "apiVersion": "2019-10-01",
       "name": "newWorkspaceTemplate",
       "resourceGroup": "DefaultResourceGroup-EUS2",
-      "subscriptionId": "[parameters('subscriptionId')]",
+      "subscriptionId": "[subscription().subscriptionId]",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -192,7 +171,7 @@
                   "settings": {
                     "content": {
                       "settings": {
-                        "content": "Scaled Activities |\nThis is a [Deployed Dashboard](https://github.com/Johanbos/scaled-activities)",
+                        "content": "Scaled Activities | This is a [Deployed Dashboard](https://github.com/Johanbos/scaled-activities)",
                         "title": "",
                         "subtitle": "",
                         "markdownSource": 1
@@ -263,11 +242,11 @@
           }
         }
       },
-      "name": "dash-scaled-activities-test-eus2",
+      "name": "[parameters('functionName')]",
       "type": "Microsoft.Portal/dashboards",
       "location": "[resourceGroup().location]",
       "tags": {
-        "hidden-title": "dash-scaled-activities-test-eus2"
+        "hidden-title": "[parameters('functionName')]"
       },
       "apiVersion": "2015-08-01-preview"
     }

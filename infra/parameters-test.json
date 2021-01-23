@@ -2,44 +2,23 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "subscriptionId": {
-            "value": "f53581df-cf83-41e6-b94d-9f2deb14f109"
-        },
         "functionName": {
             "value": "func-scaled-activities-test-eus2"
         },
         "applicationInsightsName": {
             "value": "appi-scaled-activities-test-eus2"
         },
-        "location": {
-            "value": "East US 2"
-        },
         "hostingPlanName": {
             "value": "plan-scaled-activities-test-eus2"
         },
-        "alwaysOn": {
-            "value": false
+        "dashboardName": {
+            "value": "dash-scaled-activities-test-eus2"
         },
         "storageAccountName": {
             "value": "stscaledacttesteus2"
         },
-        "sku": {
-            "value": "Dynamic"
-        },
-        "skuCode": {
-            "value": "Y1"
-        },
-        "workerSize": {
-            "value": "0"
-        },
-        "workerSizeId": {
-            "value": "0"
-        },
-        "numberOfWorkers": {
-            "value": "1"
-        },
-        "use32BitWorkerProcess": {
-            "value": true
+        "alwaysOn": {
+            "value": false
         }
     }
 }
