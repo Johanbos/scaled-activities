@@ -30,7 +30,7 @@
       "name": "[parameters('functionName')]",
       "type": "Microsoft.Web/sites",
       "kind": "functionapp",
-      "location": "[resourceGroup().location)]",
+      "location": "[resourceGroup().location]",
       "tags": {},
       "dependsOn": [
         "[concat('microsoft.insights/components/', parameters('applicationInsightsName'))]",
@@ -160,6 +160,130 @@
             "parts": {
               "0": {
                 "position": {
+                  "x": 0,
+                  "y": 0,
+                  "colSpan": 5,
+                  "rowSpan": 3
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "options",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "sharedTimeRange",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+                  "settings": {
+                    "content": {
+                      "options": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "[concat(resourceGroup.id, '/providers/Microsoft.Web/sites/', parameters('functionName'))]"
+                              },
+                              "name": "AverageMemoryWorkingSet",
+                              "aggregationType": 4,
+                              "namespace": "microsoft.web/sites",
+                              "metricVisualization": {
+                                "resourceDisplayName": "parameters('functionName')"
+                              }
+                            }
+                          ],
+                          "titleKind": "Auto",
+                          "visualization": {
+                            "chartType": 2,
+                            "legendVisualization": {
+                              "isVisible": true,
+                              "position": 2,
+                              "hideSubtitle": false
+                            },
+                            "axisVisualization": {
+                              "x": {
+                                "isVisible": true,
+                                "axisType": 2
+                              },
+                              "y": {
+                                "isVisible": true,
+                                "axisType": 1
+                              }
+                            },
+                            "disablePinning": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "1": {
+                "position": {
+                  "x": 5,
+                  "y": 0,
+                  "colSpan": 5,
+                  "rowSpan": 3
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "options",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "sharedTimeRange",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+                  "settings": {
+                    "content": {
+                      "options": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "[concat(resourceGroup.id, '/providers/Microsoft.Web/sites/', parameters('functionName'))]"
+                              },
+                              "name": "FunctionExecutionCount",
+                              "aggregationType": 1,
+                              "namespace": "microsoft.web/sites",
+                              "metricVisualization": {
+                                "resourceDisplayName": "parameters('functionName')"
+                              }
+                            }
+                          ],                          
+                          "titleKind": "Auto",
+                          "visualization": {
+                            "chartType": 2,
+                            "legendVisualization": {
+                              "isVisible": true,
+                              "position": 2,
+                              "hideSubtitle": false
+                            },
+                            "axisVisualization": {
+                              "x": {
+                                "isVisible": true,
+                                "axisType": 2
+                              },
+                              "y": {
+                                "isVisible": true,
+                                "axisType": 1
+                              }
+                            },
+                            "disablePinning": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "2": {
+                "position": {
                   "x": 10,
                   "y": 0,
                   "colSpan": 3,
@@ -180,7 +304,7 @@
                   }
                 }
               },
-              "1": {
+              "3": {
                 "position": {
                   "x": 10,
                   "y": 1,
