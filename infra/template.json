@@ -194,7 +194,7 @@
                               }
                             }
                           ],
-                          "titleKind": "Auto",
+                          "titleKind": 1,
                           "visualization": {
                             "chartType": 2,
                             "legendVisualization": {
@@ -256,7 +256,7 @@
                               }
                             }
                           ],                          
-                          "titleKind": "Auto",
+                          "titleKind": 1,
                           "visualization": {
                             "chartType": 2,
                             "legendVisualization": {
