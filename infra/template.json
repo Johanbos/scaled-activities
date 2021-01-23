@@ -194,7 +194,7 @@
                               }
                             }
                           ],
-                          "title": "[concat('Avg Average memory working set for ', parameters('functionName')]",
+                          "title": "[concat('Avg Average memory working set for ', parameters('functionName'))]",
                           "titleKind": 1,
                           "visualization": {
                             "chartType": 2,
@@ -257,7 +257,7 @@
                               }
                             }
                           ],     
-                          "title": "[concat('Sum Function Execution Count for ', parameters('functionName')]",               
+                          "title": "[concat('Sum Function Execution Count for ', parameters('functionName'))]",               
                           "titleKind": 1,
                           "visualization": {
                             "chartType": 2,
