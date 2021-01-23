@@ -17,9 +17,6 @@
         "hostingPlanName": {
             "value": "plan-scaled-activities-test-eus2"
         },
-        "resourceGroup": {
-            "value": "rg-scaled-activities-test-eus2"
-        },
         "alwaysOn": {
             "value": false
         },
