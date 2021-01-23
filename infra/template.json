@@ -189,9 +189,6 @@
                               "name": "AverageMemoryWorkingSet",
                               "aggregationType": 4,
                               "namespace": "microsoft.web/sites",
-                              "metricVisualization": {
-                                "resourceDisplayName": "parameters('functionName')"
-                              }
                             }
                           ],
                           "title": "[concat('Avg Average memory working set for ', parameters('functionName'))]",
@@ -252,9 +249,6 @@
                               "name": "FunctionExecutionCount",
                               "aggregationType": 1,
                               "namespace": "microsoft.web/sites",
-                              "metricVisualization": {
-                                "resourceDisplayName": "parameters('functionName')"
-                              }
                             }
                           ],     
                           "title": "[concat('Sum Function Execution Count for ', parameters('functionName'))]",               
