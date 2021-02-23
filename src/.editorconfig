@@ -10,7 +10,7 @@ dotnet_diagnostic.SA1633.severity = none
 dotnet_diagnostic.SA1600.severity = none
 
 # AV1008: Class should not be static
-dotnet_diagnostic.AV1008.severity = none
+dotnet_diagnostic.AV1008.severity = warning
 
 # AV1755: Name of async method should end with Async or TaskAsync
 dotnet_diagnostic.AV1755.severity = none
@@ -20,3 +20,6 @@ dotnet_diagnostic.SA0001.severity = none
 
 # AV2210: Build with -warnaserror.
 dotnet_diagnostic.AV2210.severity = none
+
+# IDE0003: Remove qualification
+dotnet_diagnostic.IDE0003.severity = none
