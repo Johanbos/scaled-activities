@@ -1,12 +1,12 @@
 using System;
 using System.Threading.Tasks;
-using JohanBos.ScaledActivities.Interfaces;
+using JohanBos.ScaledActivities.Function.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 
-namespace JohanBos.ScaledActivities
+namespace JohanBos.ScaledActivities.Function
 {
     public class View
     {

@@ -1,4 +1,4 @@
-﻿namespace JohanBos.ScaledActivities.Models
+﻿namespace JohanBos.ScaledActivities.Function.Models
 {
     public class Command
     {

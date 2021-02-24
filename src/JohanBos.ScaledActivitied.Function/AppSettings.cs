@@ -1,4 +1,4 @@
-﻿namespace JohanBos.ScaledActivities
+﻿namespace JohanBos.ScaledActivities.Function
 {
     public class AppSettings
     {

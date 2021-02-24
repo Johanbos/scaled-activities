@@ -1,4 +1,9 @@
-﻿[*.cs]
+﻿# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*.cs]
 
 # SA1200: Using directives should be placed correctly
 dotnet_diagnostic.SA1200.severity = none
@@ -10,7 +15,7 @@ dotnet_diagnostic.SA1633.severity = none
 dotnet_diagnostic.SA1600.severity = none
 
 # AV1008: Class should not be static
-dotnet_diagnostic.AV1008.severity = warning
+dotnet_diagnostic.AV1008.severity = error
 
 # AV1755: Name of async method should end with Async or TaskAsync
 dotnet_diagnostic.AV1755.severity = none

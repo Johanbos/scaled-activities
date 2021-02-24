@@ -2,10 +2,11 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AzureFunctionsVersion>v3</AzureFunctionsVersion>
-    <RootNamespace>JohanBos.ScaledActivities</RootNamespace>
+    <RootNamespace>JohanBos.ScaledActivities.Function</RootNamespace>
     <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>false</EnableNETAnalyzers>
     <UserSecretsId>ee2ae844-6551-4040-bf3e-652169cacf78</UserSecretsId>
+    <AssemblyName>JohanBos.ScaledActivities.Function</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702;AV2210</NoWarn>

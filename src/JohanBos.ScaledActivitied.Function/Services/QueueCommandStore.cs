@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Azure.Storage.Queues;
-using JohanBos.ScaledActivities.Interfaces;
-using JohanBos.ScaledActivities.Models;
+using JohanBos.ScaledActivities.Function.Interfaces;
+using JohanBos.ScaledActivities.Function.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace JohanBos.ScaledActivities
+namespace JohanBos.ScaledActivities.Function
 {
     internal class QueueCommandStore : ICommandStore
     {

@@ -1,13 +1,13 @@
 ﻿using System;
-using JohanBos.ScaledActivities.Interfaces;
+using JohanBos.ScaledActivities.Function.Interfaces;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Azure.WebJobs.Host.Bindings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-[assembly: FunctionsStartup(typeof(JohanBos.ScaledActivities.Startup))]
+[assembly: FunctionsStartup(typeof(JohanBos.ScaledActivities.Function.Startup))]
 
-namespace JohanBos.ScaledActivities
+namespace JohanBos.ScaledActivities.Function
 {
     public class Startup : FunctionsStartup
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace JohanBos.ScaledActivities.Interfaces
+namespace JohanBos.ScaledActivities.Function.Interfaces
 {
     public interface ICommandStore
     {
