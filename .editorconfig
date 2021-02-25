@@ -3,7 +3,13 @@
 # top-most EditorConfig file
 root = true
 
+[*.json]
+indent_style = space
+indent_size = 4
+
 [*.cs]
+indent_style = space
+indent_size = 4
 
 # SA1200: Using directives should be placed correctly
 dotnet_diagnostic.SA1200.severity = none
@@ -28,3 +34,6 @@ dotnet_diagnostic.AV2210.severity = none
 
 # IDE0003: Remove qualification
 dotnet_diagnostic.IDE0003.severity = none
+
+# VSTHRD200: Use "Async" suffix for async methods
+dotnet_diagnostic.VSTHRD200.severity = none
