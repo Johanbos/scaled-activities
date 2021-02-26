@@ -28,7 +28,7 @@ namespace JohanBos.ScaledActivities.Function
 
         private async Task<QueueClient> InitializeQueueClient()
         {
-            var connectionString = this.Settings.Values.AzureWebJobsStorage ?? throw new ArgumentNullException("settings.ConnectionStrings.Storage");
+            var connectionString = this.Settings.Values?.AzureWebJobsStorage ?? throw new ArgumentNullException("settings.ConnectionStrings.Storage");
             this.Logger.LogInformation($"{this.GetType().FullName} InitializeQueueClient {this.queueName}");
             var options = new QueueClientOptions()
             {
