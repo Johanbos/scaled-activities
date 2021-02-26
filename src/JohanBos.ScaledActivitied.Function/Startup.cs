@@ -13,6 +13,7 @@ namespace JohanBos.ScaledActivities.Function
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddLogging();
+            builder.Services.AddApplicationInsightsTelemetry();
             builder.Services.AddOptions<AppSettings>()
                 .Configure<IConfiguration>((settings, configuration) => configuration.Bind(settings));
 
