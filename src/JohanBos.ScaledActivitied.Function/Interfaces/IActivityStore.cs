@@ -4,12 +4,8 @@ using JohanBos.ScaledActivities.Function.Models;
 
 namespace JohanBos.ScaledActivities.Function.Interfaces
 {
-    public interface ICommandStore
+    public interface IActivityStore
     {
-        Task Start(IEnumerable<Command> commands);
-
-        Task<IEnumerable<Command>> View(int? maxMessages);
-
-        Task Clear();
+        Task Add(IEnumerable<Activity> activities);
     }
 }

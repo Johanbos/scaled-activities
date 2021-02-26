@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using JohanBos.ScaledActivities.Function.Interfaces;
+using JohanBos.ScaledActivities.Function.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -23,19 +24,24 @@ namespace JohanBos.ScaledActivities.Function
         public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest httpRequest)
         {
             var amount = httpRequest.Query.ContainsKey(QSMessages) ? Convert.ToInt32(httpRequest.Query[QSMessages]) : 32;
-            var commands = new List<string>();
-            for (int index = 0; index < amount; index++)
-            {
-                commands.Add(this.CreateMessage(index));
-            }
-
+            var commands = this.CreateCommands(amount);
             await this.commandStore.Start(commands);
             return new OkObjectResult("Done");
         }
 
-        private string CreateMessage(int index)
+        private IEnumerable<Command> CreateCommands(int amount)
         {
-            return string.Concat(DateTime.UtcNow.Ticks, "-", index);
+            var startUtc = DateTime.UtcNow;
+            for (int index = 0; index < amount; index++)
+            {
+                yield return new Command
+                {
+                    Id = string.Concat(startUtc.Ticks, "-", index),
+                    StartUtc = startUtc,
+                    ActivitiesGroup = index,
+                    ActivitiesCount = 500,
+                };
+            }
         }
     }
 }

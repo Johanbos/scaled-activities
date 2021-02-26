@@ -1,5 +1,4 @@
-﻿using System;
-using JohanBos.ScaledActivities.Function.Interfaces;
+﻿using JohanBos.ScaledActivities.Function.Interfaces;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Azure.WebJobs.Host.Bindings;
 using Microsoft.Extensions.Configuration;
@@ -18,17 +17,15 @@ namespace JohanBos.ScaledActivities.Function
                 .Configure<IConfiguration>((settings, configuration) => configuration.Bind(settings));
 
             builder.Services.AddTransient<ICommandStore, QueueCommandStore>();
+            builder.Services.AddTransient<IActivityStore, QueueActivityStore>();
         }
 
         public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
         {
             var context = builder.GetContext();
-            var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
             _ = builder.ConfigurationBuilder
                 .SetBasePath(context.ApplicationRootPath)
-                .AddJsonFile($"appSettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appSettings.{environmentName}.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"local.settings.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables()
                 .AddUserSecrets<Startup>();
         }
