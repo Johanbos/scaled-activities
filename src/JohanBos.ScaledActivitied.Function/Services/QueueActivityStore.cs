@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using JohanBos.ScaledActivities.Function.Interfaces;
@@ -28,7 +29,7 @@ namespace JohanBos.ScaledActivities.Function
                 tasks.Add(queueClient.SendMessageAsync(JsonSerializer.Serialize(activity)));
             }
 
-            await Task.WhenAll(tasks);
+            await Task.WhenAll(tasks.AsParallel());
         }
     }
 }

@@ -20,10 +20,5 @@ namespace JohanBos.ScaledActivities.Function
             builder.Services.AddTransient<ICommandStore, QueueCommandStore>();
             builder.Services.AddTransient<IActivityStore, QueueActivityStore>();
         }
-
-        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
-        {
-
-        }
     }
 }
