@@ -31,7 +31,7 @@ namespace JohanBos.ScaledActivities.Function
                 tasks.Add(queueClient.SendMessageAsync(serialized));
             }
 
-            await Task.WhenAll(tasks);
+            await Task.WhenAll(tasks.AsParallel());
         }
 
         public async Task<IEnumerable<Command>> View(int? maxMessages)

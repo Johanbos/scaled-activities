@@ -1,5 +1,4 @@
 using System.Text.Json;
-using System.Threading.Tasks;
 using JohanBos.ScaledActivities.Function.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
