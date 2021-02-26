@@ -2,6 +2,8 @@
 {
     public class AppSettings
     {
-        public AppSettingsValues Values { get; set; }
+        public string AzureWebJobsStorage { get; set; }
+
+        public string AzureWebJobsStorage2 { get; set; }
     }
 }

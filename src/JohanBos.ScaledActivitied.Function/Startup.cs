@@ -23,12 +23,7 @@ namespace JohanBos.ScaledActivities.Function
 
         public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
         {
-            var context = builder.GetContext();
-            _ = builder.ConfigurationBuilder
-                .SetBasePath(context.ApplicationRootPath)
-                .AddJsonFile($"local.settings.json", optional: true, reloadOnChange: true)
-                .AddEnvironmentVariables()
-                .AddUserSecrets<Startup>();
+
         }
     }
 }
