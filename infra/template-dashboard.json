@@ -1,0 +1,229 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "functionName": {
+      "type": "string"
+    }
+  },
+  "variables": {
+  },
+  "resources": [
+    {
+        "name": "[parameters('functionName')]",
+        "type": "Microsoft.Portal/dashboards",
+        "location": "[resourceGroup().location]",
+        "apiVersion": "2015-08-01-preview",
+        "properties": {
+            "lenses": {
+                "0": {
+                    "order": 0,
+                    "parts": {
+                        "0": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "colSpan": 5,
+                                "rowSpan": 3
+                            },
+                            "metadata": {
+                                "inputs": [
+                                    {
+                                        "name": "options",
+                                        "isOptional": true
+                                    },
+                                    {
+                                        "name": "sharedTimeRange",
+                                        "isOptional": true
+                                    }
+                                ],
+                                "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+                                "settings": {
+                                    "content": {
+                                        "options": {
+                                            "chart": {
+                                                "metrics": [
+                                                    {
+                                                        "resourceMetadata": {
+                                                            "id": "[concat(resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('functionName'))]"
+                                                        },
+                                                        "name": "AverageMemoryWorkingSet",
+                                                        "aggregationType": 4,
+                                                        "namespace": "microsoft.web/sites"
+                                                    }
+                                                ],
+                                                "title": "[concat('Avg Average memory working set for ', parameters('functionName'))]",
+                                                "titleKind": 1,
+                                                "visualization": {
+                                                    "chartType": 2,
+                                                    "legendVisualization": {
+                                                        "isVisible": true,
+                                                        "position": 2,
+                                                        "hideSubtitle": false
+                                                    },
+                                                    "axisVisualization": {
+                                                        "x": {
+                                                            "isVisible": true,
+                                                            "axisType": 2
+                                                        },
+                                                        "y": {
+                                                            "isVisible": true,
+                                                            "axisType": 1
+                                                        }
+                                                    },
+                                                    "disablePinning": true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "1": {
+                            "position": {
+                                "x": 5,
+                                "y": 0,
+                                "colSpan": 5,
+                                "rowSpan": 3
+                            },
+                            "metadata": {
+                                "inputs": [
+                                    {
+                                        "name": "options",
+                                        "isOptional": true
+                                    },
+                                    {
+                                        "name": "sharedTimeRange",
+                                        "isOptional": true
+                                    }
+                                ],
+                                "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+                                "settings": {
+                                    "content": {
+                                        "options": {
+                                            "chart": {
+                                                "metrics": [
+                                                    {
+                                                        "resourceMetadata": {
+                                                            "id": "[concat(resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('functionName'))]"
+                                                        },
+                                                        "name": "FunctionExecutionCount",
+                                                        "aggregationType": 1,
+                                                        "namespace": "microsoft.web/sites"
+                                                    }
+                                                ],
+                                                "title": "[concat('Sum Function Execution Count for ', parameters('functionName'))]",
+                                                "titleKind": 1,
+                                                "visualization": {
+                                                    "chartType": 2,
+                                                    "legendVisualization": {
+                                                        "isVisible": true,
+                                                        "position": 2,
+                                                        "hideSubtitle": false
+                                                    },
+                                                    "axisVisualization": {
+                                                        "x": {
+                                                            "isVisible": true,
+                                                            "axisType": 2
+                                                        },
+                                                        "y": {
+                                                            "isVisible": true,
+                                                            "axisType": 1
+                                                        }
+                                                    },
+                                                    "disablePinning": true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "2": {
+                            "position": {
+                                "x": 10,
+                                "y": 0,
+                                "colSpan": 3,
+                                "rowSpan": 1
+                            },
+                            "metadata": {
+                                "inputs": [],
+                                "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                                "settings": {
+                                    "content": {
+                                        "settings": {
+                                            "content": "Scaled Activities | This is a [Deployed Dashboard](https://github.com/Johanbos/scaled-activities)",
+                                            "title": "",
+                                            "subtitle": "",
+                                            "markdownSource": 1
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "3": {
+                            "position": {
+                                "x": 10,
+                                "y": 1,
+                                "colSpan": 3,
+                                "rowSpan": 4
+                            },
+                            "metadata": {
+                                "inputs": [
+                                    {
+                                        "name": "resourceGroup",
+                                        "isOptional": true
+                                    },
+                                    {
+                                        "name": "id",
+                                        "value": "[resourceGroup().id]",
+                                        "isOptional": true
+                                    }
+                                ],
+                                "type": "Extension/HubsExtension/PartType/ResourceGroupMapPinnedPart",
+                                "deepLink": "[concat('#@snelstartlokaal.onmicrosoft.com/resource', resourceGroup().id, '/overview')]"
+                            }
+                        }
+                    }
+                }
+            },
+            "metadata": {
+                "model": {
+                    "timeRange": {
+                        "value": {
+                            "relative": {
+                                "duration": 24,
+                                "timeUnit": 1
+                            }
+                        },
+                        "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+                    },
+                    "filterLocale": {
+                        "value": "en-us"
+                    },
+                    "filters": {
+                        "value": {
+                            "MsPortalFx_TimeRange": {
+                                "model": {
+                                    "format": "utc",
+                                    "granularity": "auto",
+                                    "relative": "3d"
+                                },
+                                "displayCache": {
+                                    "name": "UTC Time",
+                                    "value": "Past 3 days"
+                                },
+                                "filteredPartIds": [
+                                    "StartboardPart-MonitorChartPart-988eabad-d24f-4c30-976d-a77a245aa14f",
+                                    "StartboardPart-MonitorChartPart-988eabad-d24f-4c30-976d-a77a245aa151"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+  ]
+}
