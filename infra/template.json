@@ -151,22 +151,6 @@
                 ]
             }
         }
-    },
-    {
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2020-10-01",
-        "name": "dashboard",
-        "properties": {
-            "mode": "Incremental",
-            "templateLink": {
-                "relativePath": "template-dashboard.json"
-            },
-            "parameters": {
-                "functionName": {
-                    "value": "[parameters('functionName')]"
-                }
-            }
-        }
     }
   ],
   "outputs": {
