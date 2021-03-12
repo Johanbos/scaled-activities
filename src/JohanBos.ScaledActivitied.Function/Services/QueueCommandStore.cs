@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Azure.Storage.Queues;
 using JohanBos.ScaledActivities.Function.Interfaces;
 using JohanBos.ScaledActivities.Function.Models;
 using Microsoft.Extensions.Logging;
@@ -9,48 +11,43 @@ using Microsoft.Extensions.Options;
 
 namespace JohanBos.ScaledActivities.Function
 {
-    internal class QueueCommandStore : ICommandStore
+    internal class QueueCommandStore : QueueStore, ICommandStore
     {
-        private readonly AppSettings settings;
-        private readonly ILogger<Start> logger;
+        public const string QueueName = "commands";
 
-        public QueueCommandStore(ILogger<Start> logger, IOptions<AppSettings> options)
+        public QueueCommandStore(ILogger<QueueCommandStore> logger, IOptions<AppSettings> options)
+            : base(logger, options, QueueName)
         {
-            this.settings = options.Value;
-            this.logger = logger;
         }
 
-        public async Task Start(IEnumerable<string> commands)
+        public async Task Start(IEnumerable<Command> commands)
         {
-            this.logger.LogInformation($"{typeof(QueueCommandStore).FullName} started {{queueName}}", this.settings.QueueName);
-            var queueClient = new QueueClient(this.settings.ConnectionStrings.Storage, this.settings.QueueName);
-            await queueClient.CreateIfNotExistsAsync();
+            var queueClient = await this.QueueClient;
+            this.Logger.LogInformation($"{this.GetType().FullName} started on {queueClient.Name}");
             var tasks = new List<Task>();
             foreach (var command in commands)
             {
-                tasks.Add(queueClient.SendMessageAsync(command));
+                var serialized = JsonSerializer.Serialize(command);
+                tasks.Add(queueClient.SendMessageAsync(serialized));
             }
 
-            await Task.WhenAll(tasks);
+            await Task.WhenAll(tasks.AsParallel());
         }
 
         public async Task<IEnumerable<Command>> View(int? maxMessages)
         {
-            this.logger.LogInformation($"{typeof(QueueCommandStore).FullName} viewed {{queueName}}", this.settings.QueueName);
-            var queueClient = new QueueClient(this.settings.ConnectionStrings.Storage, this.settings.QueueName);
-            await queueClient.CreateIfNotExistsAsync();
+            var queueClient = await this.QueueClient;
+            this.Logger.LogInformation($"{this.GetType().FullName} viewed {queueClient.Name}");
             var messages = await queueClient.PeekMessagesAsync(maxMessages);
-            return messages.Value.ToList().ConvertAll(peekedMessage => new Command
-            {
-                Message = peekedMessage.MessageText,
-            });
+            return messages.Value
+                .ToList()
+                .ConvertAll(peekedMessage => peekedMessage.Body.ToObjectFromJson<Command>());
         }
 
         public async Task Clear()
         {
-            this.logger.LogInformation($"{typeof(QueueCommandStore).FullName} cleared {{queueName}}", this.settings.QueueName);
-            var queueClient = new QueueClient(this.settings.ConnectionStrings.Storage, this.settings.QueueName);
-            await queueClient.CreateIfNotExistsAsync();
+            var queueClient = await this.QueueClient;
+            this.Logger.LogInformation($"{this.GetType().FullName} cleared {queueClient.Name}");
             await queueClient.ClearMessagesAsync();
         }
     }
