@@ -22,7 +22,7 @@ jobs:
     - name: Publish
       run: dotnet publish ./src/JohanBos.ScaledActivitied.Function/JohanBos.ScaledActivities.Function.csproj --output ./package
 
-    - uses: azure/login@v1
+    - uses: azure/login@v1.3.0
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
