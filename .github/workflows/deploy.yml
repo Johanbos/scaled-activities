@@ -4,6 +4,9 @@ on:
   push:
     branches:
     - main
+  pull_request:
+    branches: 
+    - main
 
 jobs:
   deploy:
@@ -26,7 +29,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Run ARM deploy
+    - name: Deploy ARM template
       id: infra
       uses: azure/arm-deploy@1.0.3
       with:
@@ -34,6 +37,15 @@ jobs:
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./infra/template.json
         parameters: ./infra/parameters-test.json
+
+    - name: Deploy ARM template dashboard
+      id: infra-dashboard
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        resourceGroupName: ${{ secrets.AZURE_RG }}
+        template: ./infra/template-dashboard.json
+        parameters: ./infra/parameters-test-dashboard.json
 
     - name: Deploy
       uses: Azure/functions-action@v1.4.0

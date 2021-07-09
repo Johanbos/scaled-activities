@@ -14,7 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{E5077E80-65EB-4A48-98BC-7545BB897B31}"
 	ProjectSection(SolutionItems) = preProject
+		infra\parameters-test-dashboard.json = infra\parameters-test-dashboard.json
 		infra\parameters-test.json = infra\parameters-test.json
+		infra\template-dashboard.json = infra\template-dashboard.json
 		infra\template.json = infra\template.json
 	EndProjectSection
 EndProject
