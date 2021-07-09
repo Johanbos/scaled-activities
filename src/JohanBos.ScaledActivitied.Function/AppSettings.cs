@@ -3,5 +3,7 @@
     public class AppSettings
     {
         public string AzureWebJobsStorage { get; set; }
+
+        public string Johan { get; set; }
     }
 }

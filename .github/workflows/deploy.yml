@@ -30,7 +30,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Deploy ARM template
-      id: infra1
+      id: infra
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
@@ -39,7 +39,7 @@ jobs:
         parameters: ./infra/parameters-test.json
 
     - name: Deploy ARM template dashboard
-      id: infra2
+      id: infra-dashboard
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
